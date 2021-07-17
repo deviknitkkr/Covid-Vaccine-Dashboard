@@ -1,6 +1,6 @@
-package com.covid.Registration_Module.repository;
+package com.covid.module_registration.repository;
 
-import com.covid.Registration_Module.entity.User;
+import com.covid.module_registration.entity.User;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

@@ -1,4 +1,4 @@
-package com.covid.Registration_Module.entity;
+package com.covid.module_registration.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

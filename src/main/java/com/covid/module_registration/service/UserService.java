@@ -1,7 +1,7 @@
-package com.covid.Registration_Module.service;
+package com.covid.module_registration.service;
 
-import com.covid.Registration_Module.entity.User;
-import com.covid.Registration_Module.repository.UserRepository;
+import com.covid.module_registration.entity.User;
+import com.covid.module_registration.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;

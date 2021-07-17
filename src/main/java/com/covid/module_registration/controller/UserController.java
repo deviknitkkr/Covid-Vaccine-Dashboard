@@ -1,7 +1,7 @@
-package com.covid.Registration_Module.controller;
+package com.covid.module_registration.controller;
 
-import com.covid.Registration_Module.entity.User;
-import com.covid.Registration_Module.service.IUserService;
+import com.covid.module_registration.entity.User;
+import com.covid.module_registration.service.IUserService;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
 import net.kaczmarzyk.spring.data.jpa.domain.GreaterThanOrEqual;
 import net.kaczmarzyk.spring.data.jpa.domain.LessThanOrEqual;
@@ -27,8 +27,8 @@ public class UserController {
     public Integer getFilteredUserCount(@And({
             @Spec(path = "gender", params = "gender", spec = Equal.class),
             @Spec(path = "state", params = "state", spec = Equal.class),
-            @Spec(path = "registrationDate", params = "registrationAfter", spec = GreaterThanOrEqual.class),
-            @Spec(path = "registrationDate", params = "registrationBefore", spec = LessThanOrEqual.class)}) Specification<User> spec) {
+            @Spec(path = "registrationDate", params = "registeredAfter", spec = GreaterThanOrEqual.class),
+            @Spec(path = "registrationDate", params = "registeredBefore", spec = LessThanOrEqual.class)}) Specification<User> spec) {
 
         return userService.getFilteredUserCount(spec);
     }

@@ -31,7 +31,7 @@ public class PressReleaseController {
             @And({
                     @Spec(path = "releaseDate", params = "releasedAfter", spec = GreaterThanOrEqual.class),
                     @Spec(path = "releaseDate", params = "releasedBefore", spec = LessThanOrEqual.class)
-            })Specification<PressRelease> spec){
+            }) Specification<PressRelease> spec) {
         return pressReleaseService.findAll(spec);
     }
 }

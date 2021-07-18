@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DefaultController implements ErrorController {
 
     @GetMapping()
-    public ResponseEntity<String> onError(){
+    public ResponseEntity<String> onError() {
         return ResponseEntity.badRequest()
                 .body("Your browser didn't send the full request ...");
     }

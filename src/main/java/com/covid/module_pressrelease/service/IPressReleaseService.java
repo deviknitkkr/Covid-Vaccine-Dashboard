@@ -8,5 +8,6 @@ import java.util.List;
 public interface IPressReleaseService {
 
     PressRelease save(PressRelease pressRelease);
+
     List<PressRelease> findAll(Specification<PressRelease> spec);
 }

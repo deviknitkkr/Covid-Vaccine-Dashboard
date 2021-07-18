@@ -1,14 +1,14 @@
 package com.covid.module_FAQ.service;
 
-import com.covid.module_FAQ.entity.FrequentlyAskedQuestions;
+import com.covid.module_FAQ.entity.FAQ;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface IFAQService {
-    FrequentlyAskedQuestions save(FrequentlyAskedQuestions faq);
+    FAQ save(FAQ faq);
 
-    List<FrequentlyAskedQuestions> getAll();
+    List<FAQ> getAll();
 
-    ResponseEntity deleteById(int id);
+    ResponseEntity<String> deleteById(int id);
 }

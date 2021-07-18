@@ -1,6 +1,6 @@
 package com.covid.module_FAQ.service;
 
-import com.covid.module_FAQ.entity.FrequentlyAskedQuestions;
+import com.covid.module_FAQ.entity.FAQ;
 import com.covid.module_FAQ.repository.FAQRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,22 +16,23 @@ public class FAQService implements IFAQService{
     FAQRepository faqRepository;
 
     @Override
-    public FrequentlyAskedQuestions save(FrequentlyAskedQuestions faq) {
+    public FAQ save(FAQ faq) {
         return faqRepository.save(faq);
     }
 
     @Override
-    public List<FrequentlyAskedQuestions> getAll() {
+    public List<FAQ> getAll() {
         return faqRepository.findAll();
     }
 
     @Override
-    public ResponseEntity deleteById(int id) {
+    public ResponseEntity<String> deleteById(int id) {
         try {
             faqRepository.deleteById(id);
-            return new ResponseEntity(HttpStatus.OK);
+            return ResponseEntity.ok("Success");
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("FAQ with id "+id+" not found!!!");
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.covid.module_FAQ.controller;
 
-import com.covid.module_FAQ.entity.FrequentlyAskedQuestions;
+import com.covid.module_FAQ.entity.FAQ;
 import com.covid.module_FAQ.service.IFAQService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +16,17 @@ public class FAQController {
     IFAQService faqService;
 
     @PostMapping("/add")
-    public FrequentlyAskedQuestions add(@RequestBody FrequentlyAskedQuestions faq){
+    public FAQ add(@RequestBody FAQ faq){
         return this.faqService.save(faq);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteById(@PathVariable (name = "id") int id){
+    public ResponseEntity<String> deleteById(@PathVariable (name = "id") int id){
         return faqService.deleteById(id);
     }
 
     @GetMapping("/view")
-    public List<FrequentlyAskedQuestions> getAllFaq(){
+    public List<FAQ> getAllFaq(){
         return faqService.getAll();
     }
 

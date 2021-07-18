@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class FrequentlyAskedQuestions {
+public class FAQ {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

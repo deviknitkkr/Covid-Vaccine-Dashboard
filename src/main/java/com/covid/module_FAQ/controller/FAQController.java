@@ -16,17 +16,17 @@ public class FAQController {
     IFAQService faqService;
 
     @PostMapping("/add")
-    public FAQ add(@RequestBody FAQ faq){
+    public FAQ add(@RequestBody FAQ faq) {
         return this.faqService.save(faq);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable (name = "id") int id){
+    public ResponseEntity<String> deleteById(@PathVariable(name = "id") int id) {
         return faqService.deleteById(id);
     }
 
     @GetMapping("/view")
-    public List<FAQ> getAllFaq(){
+    public List<FAQ> getAllFaq() {
         return faqService.getAll();
     }
 

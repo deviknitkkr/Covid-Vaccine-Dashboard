@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FAQService implements IFAQService{
+public class FAQService implements IFAQService {
 
     @Autowired
     FAQRepository faqRepository;
@@ -32,7 +32,7 @@ public class FAQService implements IFAQService{
             return ResponseEntity.ok("Success");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("FAQ with id "+id+" not found!!!");
+                    .body("FAQ with id " + id + " not found!!!");
         }
     }
 }

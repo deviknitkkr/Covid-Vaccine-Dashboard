@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class FAQService implements IFAQService {
@@ -26,7 +27,7 @@ public class FAQService implements IFAQService {
     }
 
     @Override
-    public ResponseEntity<String> deleteById(int id) {
+    public ResponseEntity<String> deleteById(UUID id) {
         try {
             faqRepository.deleteById(id);
             return ResponseEntity.ok("Success");

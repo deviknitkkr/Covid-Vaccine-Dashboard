@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/issue")
@@ -27,7 +28,7 @@ public class IssueController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteIssue(@PathVariable("id") Integer id) {
+    public ResponseEntity<String> deleteIssue(@PathVariable("id") UUID id) {
         return issueService.deleteById(id);
     }
 
@@ -42,7 +43,7 @@ public class IssueController {
     }
 
     @GetMapping("/view/{id}")
-    public Issue view(@PathVariable("id") Integer id) {
+    public Issue view(@PathVariable("id") UUID id) {
         return issueService.findById(id);
     }
 

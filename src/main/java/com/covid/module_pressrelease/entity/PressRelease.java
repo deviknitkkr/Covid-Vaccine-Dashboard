@@ -24,7 +24,7 @@ public class PressRelease {
             name = "uuid",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false,columnDefinition = "BINARY(16)")
     private UUID id;
     private String title;
 

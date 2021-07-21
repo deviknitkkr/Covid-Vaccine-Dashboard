@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class IssueService implements IIssueService {
@@ -26,7 +27,7 @@ public class IssueService implements IIssueService {
     }
 
     @Override
-    public ResponseEntity<String> deleteById(Integer id) {
+    public ResponseEntity<String> deleteById(UUID id) {
         try {
             issueRepository.deleteById(id);
         } catch (Exception e) {
@@ -38,7 +39,7 @@ public class IssueService implements IIssueService {
     }
 
     @Override
-    public Issue findById(Integer id) {
+    public Issue findById(UUID id) {
         return issueRepository.findById(id).orElseThrow();
     }
 

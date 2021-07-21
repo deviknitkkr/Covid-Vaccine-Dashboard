@@ -3,8 +3,10 @@ package com.covid.module_FAQ.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -13,12 +15,17 @@ import javax.persistence.*;
 public class FAQ {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(
+            name = "uuid",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(updatable = false, nullable = false,columnDefinition = "BINARY(16)")
+    private UUID id;
 
     private String question;
 
-    @Column(length = 2000)
+    @Column(columnDefinition = "TEXT")
     private String answer;
 
 }

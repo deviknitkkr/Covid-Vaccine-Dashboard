@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/faq")
@@ -21,7 +22,7 @@ public class FAQController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable(name = "id") int id) {
+    public ResponseEntity<String> deleteById(@PathVariable(name = "id") UUID id) {
         return faqService.deleteById(id);
     }
 

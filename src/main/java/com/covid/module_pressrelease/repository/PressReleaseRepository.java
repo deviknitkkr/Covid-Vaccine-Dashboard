@@ -4,8 +4,10 @@ import com.covid.module_pressrelease.entity.PressRelease;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import java.util.UUID;
+
 public interface PressReleaseRepository extends
-        JpaRepository<PressRelease, Integer>,
+        JpaRepository<PressRelease, UUID>,
         JpaSpecificationExecutor<PressRelease> {
 
 }

@@ -20,7 +20,7 @@ public class FirstDoseController {
     IVaccinationService vaccinationService;
 
     @PostMapping("/add/{id}")
-    public ResponseEntity<String> applyFirstDose(@PathVariable Long aadhar_no) {
+    public ResponseEntity<String> applyFirstDose(@PathVariable("id") Long aadhar_no) {
         return vaccinationService.applyFirstDose(aadhar_no);
     }
 

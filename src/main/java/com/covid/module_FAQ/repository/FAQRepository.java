@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface FAQRepository extends JpaRepository<FAQ, UUID> {
+public interface FAQRepository extends JpaRepository<FAQ, String> {
 
 }

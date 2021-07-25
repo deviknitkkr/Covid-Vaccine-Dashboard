@@ -20,9 +20,10 @@ public class FAQ {
             name = "uuid",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(updatable = false, nullable = false,columnDefinition = "BINARY(16)")
-    private UUID id;
+    @Column(updatable = false, nullable = false,columnDefinition = "VARCHAR(36)")
+    private String id;
 
+    @Column(columnDefinition = "TEXT")
     private String question;
 
     @Column(columnDefinition = "TEXT")

@@ -5,12 +5,11 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface IIssueService {
 
     Issue save(Issue issue);
-    ResponseEntity<String> deleteById(UUID id);
-    Issue findById(UUID id);
+    ResponseEntity<String> deleteById(String id);
+    Issue findById(String id);
     List<Issue> findBySpec(Specification<Issue> spec);
 }

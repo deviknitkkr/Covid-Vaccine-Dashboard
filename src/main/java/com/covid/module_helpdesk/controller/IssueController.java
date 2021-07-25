@@ -28,7 +28,7 @@ public class IssueController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteIssue(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> deleteIssue(@PathVariable("id") String id) {
         return issueService.deleteById(id);
     }
 
@@ -43,7 +43,7 @@ public class IssueController {
     }
 
     @GetMapping("/view/{id}")
-    public Issue view(@PathVariable("id") UUID id) {
+    public Issue view(@PathVariable("id") String id) {
         return issueService.findById(id);
     }
 

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.UUID;
 
 public interface PressReleaseRepository extends
-        JpaRepository<PressRelease, UUID>,
+        JpaRepository<PressRelease, String>,
         JpaSpecificationExecutor<PressRelease> {
 
 }

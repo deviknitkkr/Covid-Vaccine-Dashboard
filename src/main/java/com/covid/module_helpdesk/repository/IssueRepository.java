@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface IssueRepository extends
-        JpaRepository<Issue, UUID>,
+        JpaRepository<Issue, String>,
         JpaSpecificationExecutor<Issue> {
 
 }

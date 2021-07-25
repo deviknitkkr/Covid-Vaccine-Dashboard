@@ -22,7 +22,7 @@ public class FAQController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable(name = "id") UUID id) {
+    public ResponseEntity<String> deleteById(@PathVariable(name = "id") String id) {
         return faqService.deleteById(id);
     }
 

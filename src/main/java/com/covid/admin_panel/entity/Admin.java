@@ -27,7 +27,7 @@ public class Admin implements UserDetails {
             name = "uuid",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(updatable = false, nullable = false,columnDefinition = "BINARY(16)")
+    @Column(updatable = false, nullable = false,columnDefinition = "VARCHAR(36)")
     private String id;
 
     @NonNull

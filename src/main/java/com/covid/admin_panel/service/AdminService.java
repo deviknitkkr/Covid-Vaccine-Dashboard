@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AdminService implements UserDetailsService {
 
+
+
     private final AdminRepository adminRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 

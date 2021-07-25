@@ -36,7 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(permitUrls).permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .defaultSuccessUrl("/home");
     }
 
     @Override

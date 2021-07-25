@@ -12,3 +12,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+
+  welcome:
+    message: Welcome to Spring boot based covid portal

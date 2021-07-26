@@ -16,6 +16,8 @@ public class UserService implements IUserService {
 
     @Override
     public User save(User user) {
+
+        //TODO: validate user details
         user.setRegistrationDate(LocalDate.now());
         return this.userRepository.save(user);
     }

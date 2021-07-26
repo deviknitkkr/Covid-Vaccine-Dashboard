@@ -2,6 +2,7 @@ package com.covid.module_pressrelease.controller;
 
 import com.covid.module_pressrelease.entity.PressRelease;
 import com.covid.module_pressrelease.service.IPressReleaseService;
+import lombok.AllArgsConstructor;
 import net.kaczmarzyk.spring.data.jpa.domain.GreaterThanOrEqual;
 import net.kaczmarzyk.spring.data.jpa.domain.LessThanOrEqual;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
@@ -13,13 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/press-release")
+@AllArgsConstructor
 public class PressReleaseController {
 
     final IPressReleaseService pressReleaseService;
-
-    public PressReleaseController(IPressReleaseService pressReleaseService) {
-        this.pressReleaseService = pressReleaseService;
-    }
 
     @PostMapping("/add")
     public PressRelease add(@RequestBody PressRelease pressRelease) {

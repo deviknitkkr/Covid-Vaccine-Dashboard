@@ -20,7 +20,6 @@ import java.util.function.Predicate;
 
 @Service
 @AllArgsConstructor
-@Slf4j
 public class AdminService implements UserDetailsService {
 
     private final AdminRepository adminRepository;
@@ -56,6 +55,7 @@ public class AdminService implements UserDetailsService {
             admin.setName(registerRequest.getName());
             admin.setEmail(registerRequest.getEmail());
             admin.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+
             return ResponseEntity.ok(adminRepository.save(admin).toString());
         }
 

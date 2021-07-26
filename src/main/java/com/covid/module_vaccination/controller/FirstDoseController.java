@@ -39,8 +39,8 @@ public class FirstDoseController {
         return vaccinationService.viewFirstDose(specification);
     }
 
-    @GetMapping("/view/persent")
-    public String viewFirstDosePersent(){
+    @GetMapping("/view/percent")
+    public String viewFirstDosePercent(){
 
         Long vaccinated=this.viewFirstDose(null);
         Long registered=vaccinationService.getTotalRegistered();

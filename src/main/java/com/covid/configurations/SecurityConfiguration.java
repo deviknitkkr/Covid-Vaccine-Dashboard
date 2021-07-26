@@ -14,9 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @AllArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final AdminService adminService;
-    private final BCryptPasswordEncoder passwordEncoder;
-
     private static String[] permitUrls = {
             "/registration/**",
             "/press-release/view",
@@ -24,9 +21,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/issue/add",
             "/vaccination/first-dose/view",
             "/vaccination/second-dose/view",
+            "/vaccination/first-dose/view/*",
+            "/vaccination/second-dose/view/*",
             "/vaccination/view/*",
             "/admin/register"
     };
+    private final AdminService adminService;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -46,9 +47,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    DaoAuthenticationProvider daoAuthenticationProvider(){
+    DaoAuthenticationProvider daoAuthenticationProvider() {
 
-        DaoAuthenticationProvider daoAuthenticationProvider=new DaoAuthenticationProvider();
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(adminService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
 

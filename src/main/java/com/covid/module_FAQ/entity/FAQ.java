@@ -23,7 +23,7 @@ public class FAQ {
     @Column(updatable = false, nullable = false,columnDefinition = "VARCHAR(36)")
     private String id;
 
-    @Column(columnDefinition = "TEXT")
+   @Column(columnDefinition = "TEXT")
     private String question;
 
     @Column(columnDefinition = "TEXT")

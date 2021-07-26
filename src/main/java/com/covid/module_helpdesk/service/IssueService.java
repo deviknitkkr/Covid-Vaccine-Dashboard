@@ -27,6 +27,7 @@ public class IssueService implements IIssueService {
 
     @Override
     public ResponseEntity<String> deleteById(String id) {
+
         try {
             issueRepository.deleteById(id);
         } catch (Exception e) {

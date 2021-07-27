@@ -3,10 +3,8 @@ package com.covid.admin_panel.service;
 import com.covid.admin_panel.entity.Admin;
 import com.covid.admin_panel.entity.RegisterRequest;
 import com.covid.admin_panel.repository.AdminRepository;
-import com.covid.module_registration.exception.UserAlreadyExistException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,13 +33,7 @@ public class AdminService implements UserDetailsService {
     @SneakyThrows
     public ResponseEntity<String> register(RegisterRequest registerRequest) {
 
-        Optional<Admin> userByEmail = adminRepository.findUserByEmail(registerRequest.getEmail());
-
-        if (userByEmail.isPresent())
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-            .body("Email already exist");
-
-        else if (!emailValidator.test(registerRequest.getEmail()))
+        if (!emailValidator.test(registerRequest.getEmail()))
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Enter a valid email");
 
@@ -49,6 +41,9 @@ public class AdminService implements UserDetailsService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Password must contains atleat one Capital letter, one small letter, one digit and one special character...");
 
+        else if (adminRepository.findUserByEmail(registerRequest.getEmail()).isPresent())
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Email already exist");
 
         else {
             Admin admin = new Admin();

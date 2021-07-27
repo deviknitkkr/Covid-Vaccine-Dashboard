@@ -17,9 +17,14 @@ public class UserService implements IUserService {
     @Override
     public User save(User user) {
 
-        //TODO: validate user details
-        user.setRegistrationDate(LocalDate.now());
-        return this.userRepository.save(user);
+        if (user.getAadharNo().toString().length() != 12)
+            throw new IllegalStateException("Enter a valid aadhar no...");
+        else if (userRepository.getUserById(user.getAadharNo()).isPresent())
+            throw new IllegalStateException("Already registered with aadhar no...");
+        else {
+            user.setRegistrationDate(LocalDate.now());
+            return this.userRepository.save(user);
+        }
     }
 
     @Override

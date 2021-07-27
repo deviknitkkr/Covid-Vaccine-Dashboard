@@ -23,8 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/vaccination/second-dose/view",
             "/vaccination/first-dose/view/*",
             "/vaccination/second-dose/view/*",
-            "/vaccination/view/*",
-            "/admin/register"
+            "/vaccination/view/*"
     };
     private final AdminService adminService;
     private final BCryptPasswordEncoder passwordEncoder;

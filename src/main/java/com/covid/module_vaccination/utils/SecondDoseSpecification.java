@@ -6,8 +6,8 @@ import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.domain.Specification;
 
-@Spec(path = "firstDoseDate", spec = NotNull.class, constVal = "true")
+@Spec(path = "secondDoseDate", spec = NotNull.class, constVal = "true")
 @Configuration
-public interface FirstDoseSpecification extends Specification<User> {
+public interface SecondDoseSpecification extends Specification<User> {
 
 }

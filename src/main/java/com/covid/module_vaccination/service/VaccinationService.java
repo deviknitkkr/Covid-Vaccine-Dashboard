@@ -2,9 +2,12 @@ package com.covid.module_vaccination.service;
 
 import com.covid.module_registration.entity.User;
 import com.covid.module_registration.repository.UserRepository;
+import com.covid.module_vaccination.utils.FirstDoseSpecification;
 import com.covid.module_vaccination.vo.VaccinationStatus;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import net.kaczmarzyk.spring.data.jpa.domain.NotNull;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +23,10 @@ import java.util.Optional;
 public class VaccinationService implements IVaccinationService {
 
     private final UserRepository userRepository;
-//    private final FirstDoseSpecification firstDoseSpecification;
 
     @Override
     public ResponseEntity<String> applyFirstDose(Long aadhar_no) {
-        
+
         Optional<User> user = userRepository.findById(aadhar_no);
 
         if (user.isEmpty())
@@ -61,25 +63,13 @@ public class VaccinationService implements IVaccinationService {
 
     @Override
     public Long viewFirstDose(Specification<User> specification) {
-
-       /* TODO: Implement optimized solution for user count based on specifications
-        specification = Specification.where(specification)
-                .and(firstDoseSpecification);
-        */
-
-        return userRepository.findAll(specification)
-                .stream()
-                .filter(x -> x.getFirstDoseDate() != null)
-                .count();
+//        specification.and(firstDoseSpecification);
+        return userRepository.count(specification);
     }
 
     @Override
     public Long viewSecondDose(Specification<User> specification) {
-
-        return userRepository.findAll(specification)
-                .stream()
-                .filter(x -> x.getSecondDoseDate() != null)
-                .count();
+        return userRepository.count(specification);
     }
 
     @Override

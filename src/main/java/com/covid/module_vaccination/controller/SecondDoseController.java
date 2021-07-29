@@ -2,6 +2,7 @@ package com.covid.module_vaccination.controller;
 
 import com.covid.module_registration.entity.User;
 import com.covid.module_vaccination.service.IVaccinationService;
+import com.covid.module_vaccination.utils.SecondDoseSpecification;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
 import net.kaczmarzyk.spring.data.jpa.domain.GreaterThanOrEqual;
 import net.kaczmarzyk.spring.data.jpa.domain.LessThanOrEqual;
@@ -32,18 +33,17 @@ public class SecondDoseController {
                     @Spec(path = "state", params = "state", spec = Equal.class),
                     @Spec(path = "second_dose_date", params = "vaccinatedAfter", spec = GreaterThanOrEqual.class),
                     @Spec(path = "second_dose_date", params = "vaccinatedBefore", spec = LessThanOrEqual.class)
-            })
-                    Specification<User> specification
-    ) {
-        return vaccinationService.viewSecondDose(specification);
+            }) Specification<User> specification, SecondDoseSpecification secondDoseSpecification) {
+
+        return vaccinationService.viewSecondDose(Specification.where(secondDoseSpecification).and(specification));
     }
 
     @GetMapping("/view/percent")
-    public String viewSecondDosePercent(){
+    public String viewSecondDosePercent(SecondDoseSpecification secondDoseSpecifications) {
 
-        Long vaccinated=this.viewSecondDose(null);
-        Long registered=vaccinationService.getTotalRegistered();
+        Long vaccinated = this.viewSecondDose(null,secondDoseSpecifications);
+        Long registered = vaccinationService.getTotalRegistered();
 
-        return (vaccinated*100/registered)+"%";
+        return (vaccinated * 100 / registered) + "%";
     }
 }

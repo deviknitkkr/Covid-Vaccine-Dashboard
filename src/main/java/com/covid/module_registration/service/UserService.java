@@ -2,16 +2,16 @@ package com.covid.module_registration.service;
 
 import com.covid.module_registration.entity.User;
 import com.covid.module_registration.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
 @Service
+@AllArgsConstructor
 public class UserService implements IUserService {
 
-    @Autowired
     UserRepository userRepository;
 
     @Override
@@ -19,7 +19,7 @@ public class UserService implements IUserService {
 
         if (user.getAadharNo().toString().length() != 12)
             throw new IllegalStateException("Enter a valid aadhar no...");
-        else if (userRepository.getUserById(user.getAadharNo()).isPresent())
+        else if (userRepository.findById(user.getAadharNo()).isPresent())
             throw new IllegalStateException("Already registered with aadhar no...");
         else {
             user.setRegistrationDate(LocalDate.now());
@@ -28,7 +28,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Integer getFilteredUserCount(Specification<User> spec) {
-        return userRepository.findAll(spec).size();
+    public long getFilteredUserCount(Specification<User> spec) {
+        return userRepository.count(spec);
     }
 }

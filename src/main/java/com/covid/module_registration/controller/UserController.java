@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/view")
-    public Integer getFilteredUserCount(@And({
+    public long getFilteredUserCount(@And({
             @Spec(path = "gender", params = "gender", spec = Equal.class),
             @Spec(path = "state", params = "state", spec = Equal.class),
             @Spec(path = "registrationDate", params = "registeredAfter", spec = GreaterThanOrEqual.class),

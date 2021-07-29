@@ -15,8 +15,8 @@ import java.time.LocalDate;
 @Entity
 public class User {
 
-    @Id
     @Column(name = "id")
+    @Id
     private Long aadharNo;
     private String name;
     private String gender;

@@ -3,8 +3,8 @@ package com.covid.module_vaccination.service;
 import com.covid.module_registration.entity.User;
 import com.covid.module_registration.repository.UserRepository;
 import com.covid.module_vaccination.vo.VaccinationStatus;
+import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +16,15 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class VaccinationService implements IVaccinationService {
 
-    @Autowired
-    UserRepository userRepository;
-
+    private final UserRepository userRepository;
+//    private final FirstDoseSpecification firstDoseSpecification;
 
     @Override
     public ResponseEntity<String> applyFirstDose(Long aadhar_no) {
-
+        
         Optional<User> user = userRepository.findById(aadhar_no);
 
         if (user.isEmpty())
@@ -61,14 +61,23 @@ public class VaccinationService implements IVaccinationService {
 
     @Override
     public Long viewFirstDose(Specification<User> specification) {
-        return userRepository.findAll(specification).stream()
+
+       /* TODO: Implement optimized solution for user count based on specifications
+        specification = Specification.where(specification)
+                .and(firstDoseSpecification);
+        */
+
+        return userRepository.findAll(specification)
+                .stream()
                 .filter(x -> x.getFirstDoseDate() != null)
                 .count();
     }
 
     @Override
     public Long viewSecondDose(Specification<User> specification) {
-        return userRepository.findAll(specification).stream()
+
+        return userRepository.findAll(specification)
+                .stream()
                 .filter(x -> x.getSecondDoseDate() != null)
                 .count();
     }

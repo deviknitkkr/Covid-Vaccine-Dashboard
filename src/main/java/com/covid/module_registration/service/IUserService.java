@@ -6,5 +6,5 @@ import org.springframework.data.jpa.domain.Specification;
 public interface IUserService {
     User save(User user);
 
-    Integer getFilteredUserCount(Specification<User> spec);
+    long getFilteredUserCount(Specification<User> spec);
 }

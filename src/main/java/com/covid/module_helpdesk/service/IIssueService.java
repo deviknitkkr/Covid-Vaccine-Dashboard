@@ -9,7 +9,10 @@ import java.util.List;
 public interface IIssueService {
 
     Issue save(Issue issue);
+
     ResponseEntity<String> deleteById(String id);
+
     Issue findById(String id);
+
     List<Issue> findBySpec(Specification<Issue> spec);
 }

@@ -33,7 +33,7 @@ public class FirstDoseController {
                     @Spec(path = "state", params = "state", spec = Equal.class),
                     @Spec(path = "firstDoseDate", params = "vaccinatedAfter", spec = GreaterThanOrEqual.class),
                     @Spec(path = "secondDoseDate", params = "vaccinatedBefore", spec = LessThanOrEqual.class)
-            }) Specification<User> specification , FirstDoseSpecification firstDoseSpecification) {
+            }) Specification<User> specification, FirstDoseSpecification firstDoseSpecification) {
 
         return vaccinationService.viewFirstDose(Specification.where(firstDoseSpecification).and(specification));
     }
@@ -41,7 +41,7 @@ public class FirstDoseController {
     @GetMapping("/view/percent")
     public String viewFirstDosePercent(FirstDoseSpecification firstDoseSpecification) {
 
-        Long vaccinated = this.viewFirstDose(null,firstDoseSpecification);
+        Long vaccinated = this.viewFirstDose(null, firstDoseSpecification);
         Long registered = vaccinationService.getTotalRegistered();
 
         return (vaccinated * 100 / registered) + "%";

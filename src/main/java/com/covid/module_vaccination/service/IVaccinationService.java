@@ -8,10 +8,15 @@ import org.springframework.http.ResponseEntity;
 public interface IVaccinationService {
 
     ResponseEntity<String> applyFirstDose(Long aadhar_no);
+
     ResponseEntity<String> applySecondDose(Long aadhar_no);
+
     Long viewFirstDose(Specification<User> specification);
+
     Long viewSecondDose(Specification<User> specification);
+
     Long getTotalRegistered();
+
     VaccinationStatus getVaccinationStatus(Long aadhar_no);
 
 }

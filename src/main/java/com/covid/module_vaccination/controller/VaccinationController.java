@@ -16,7 +16,7 @@ public class VaccinationController {
     IVaccinationService vaccinationService;
 
     @GetMapping("view/{id}")
-    public VaccinationStatus getVaccinationStatus(@PathVariable("id") Long aadhar_no){
+    public VaccinationStatus getVaccinationStatus(@PathVariable("id") Long aadhar_no) {
         return vaccinationService.getVaccinationStatus(aadhar_no);
     }
 }

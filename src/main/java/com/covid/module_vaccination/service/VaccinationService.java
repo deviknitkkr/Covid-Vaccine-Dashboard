@@ -2,12 +2,9 @@ package com.covid.module_vaccination.service;
 
 import com.covid.module_registration.entity.User;
 import com.covid.module_registration.repository.UserRepository;
-import com.covid.module_vaccination.utils.FirstDoseSpecification;
 import com.covid.module_vaccination.vo.VaccinationStatus;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import net.kaczmarzyk.spring.data.jpa.domain.NotNull;
-import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,7 +60,6 @@ public class VaccinationService implements IVaccinationService {
 
     @Override
     public Long viewFirstDose(Specification<User> specification) {
-//        specification.and(firstDoseSpecification);
         return userRepository.count(specification);
     }
 

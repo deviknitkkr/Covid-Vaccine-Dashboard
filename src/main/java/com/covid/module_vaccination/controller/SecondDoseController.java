@@ -41,7 +41,7 @@ public class SecondDoseController {
     @GetMapping("/view/percent")
     public String viewSecondDosePercent(SecondDoseSpecification secondDoseSpecifications) {
 
-        Long vaccinated = this.viewSecondDose(null,secondDoseSpecifications);
+        Long vaccinated = this.viewSecondDose(null, secondDoseSpecifications);
         Long registered = vaccinationService.getTotalRegistered();
 
         return (vaccinated * 100 / registered) + "%";

@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @AllArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private static String[] permitUrls = {
+    private static final String[] permitUrls = {
             "/registration/**",
             "/press-release/view",
             "/faq/view",

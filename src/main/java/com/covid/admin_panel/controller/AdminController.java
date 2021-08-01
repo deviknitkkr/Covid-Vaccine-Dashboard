@@ -1,6 +1,5 @@
 package com.covid.admin_panel.controller;
 
-import com.covid.admin_panel.entity.Admin;
 import com.covid.admin_panel.entity.RegisterRequest;
 import com.covid.admin_panel.service.AdminService;
 import lombok.AllArgsConstructor;
@@ -18,7 +17,7 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
         return adminService.register(registerRequest);
     }
 }

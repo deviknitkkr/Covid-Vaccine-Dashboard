@@ -17,7 +17,7 @@ public class FAQController {
 
     @PostMapping("/add")
     public FAQ add(@RequestBody FAQ faq) {
-        return this.faqService.save(faq);
+        return faqService.save(faq);
     }
 
     @DeleteMapping("/delete/{id}")

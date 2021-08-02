@@ -35,7 +35,7 @@ public class FirstDoseController {
                     @Spec(path = "secondDoseDate", params = "vaccinatedBefore", spec = LessThanOrEqual.class)
             }) Specification<User> specification, FirstDoseSpecification firstDoseSpecification) {
 
-        return vaccinationService.viewFirstDose(Specification.where(firstDoseSpecification).and(specification));
+        return vaccinationService.viewDoseCount(Specification.where(firstDoseSpecification).and(specification));
     }
 
     @GetMapping("/view/percent")

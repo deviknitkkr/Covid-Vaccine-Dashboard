@@ -59,12 +59,7 @@ public class VaccinationService implements IVaccinationService {
     }
 
     @Override
-    public Long viewFirstDose(Specification<User> specification) {
-        return userRepository.count(specification);
-    }
-
-    @Override
-    public Long viewSecondDose(Specification<User> specification) {
+    public Long viewDoseCount(Specification<User> specification) {
         return userRepository.count(specification);
     }
 

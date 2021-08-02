@@ -11,9 +11,7 @@ public interface IVaccinationService {
 
     ResponseEntity<String> applySecondDose(Long aadhar_no);
 
-    Long viewFirstDose(Specification<User> specification);
-
-    Long viewSecondDose(Specification<User> specification);
+    Long viewDoseCount(Specification<User> specification);
 
     Long getTotalRegistered();
 

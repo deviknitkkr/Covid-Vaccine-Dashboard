@@ -29,7 +29,7 @@ public class FAQService implements IFAQService {
     public ResponseEntity<String> deleteById(String id) {
         try {
             faqRepository.deleteById(id);
-            return ResponseEntity.ok("Success");
+            return ResponseEntity.ok("Successfully deleted FAQ with id:"+id);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("FAQ with id " + id + " not found!!!");

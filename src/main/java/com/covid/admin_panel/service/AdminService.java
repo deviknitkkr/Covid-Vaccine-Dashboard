@@ -3,8 +3,7 @@ package com.covid.admin_panel.service;
 import com.covid.admin_panel.entity.Admin;
 import com.covid.admin_panel.entity.RegisterRequest;
 import com.covid.admin_panel.repository.AdminRepository;
-import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,13 +14,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.function.Predicate;
 
+@Data
 @Service
 @AllArgsConstructor
 public class AdminService implements UserDetailsService {
 
     private final AdminRepository adminRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-    private final Predicate<String> passwordValidator = s -> s.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$");
+    private final Predicate<String> passwordValidator = s->s.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$");
     private final Predicate<String> emailValidator = s -> s.matches("^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+");
 
     @Override
@@ -49,8 +49,8 @@ public class AdminService implements UserDetailsService {
             admin.setName(registerRequest.getName());
             admin.setEmail(registerRequest.getEmail());
             admin.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-
-            return ResponseEntity.ok(adminRepository.save(admin).toString());
+            adminRepository.save(admin);
+            return ResponseEntity.ok("New Admin created successfully");
         }
 
     }

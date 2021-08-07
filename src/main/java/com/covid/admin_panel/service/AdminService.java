@@ -2,6 +2,7 @@ package com.covid.admin_panel.service;
 
 import com.covid.admin_panel.entity.Admin;
 import com.covid.admin_panel.entity.RegisterRequest;
+import com.covid.admin_panel.exceptions.InvalidInputException;
 import com.covid.admin_panel.repository.AdminRepository;
 import lombok.*;
 import org.springframework.http.HttpStatus;
@@ -33,16 +34,13 @@ public class AdminService implements UserDetailsService {
     public ResponseEntity<String> register(RegisterRequest registerRequest) {
 
         if (!emailValidator.test(registerRequest.getEmail()))
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Enter a valid email");
+            throw new InvalidInputException("Enter a valid email");
 
         else if (!passwordValidator.test(registerRequest.getPassword()))
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Password must contains atleat one Capital letter, one small letter, one digit and one special character...");
+            throw new InvalidInputException("Password must contains atleat one Capital letter, one small letter, one digit and one special character...");
 
         else if (adminRepository.findUserByEmail(registerRequest.getEmail()).isPresent())
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("Email already exist");
+            throw new InvalidInputException("Email already exists...");
 
         else {
             Admin admin = new Admin();

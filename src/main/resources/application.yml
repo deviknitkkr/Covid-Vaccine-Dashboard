@@ -15,3 +15,9 @@ spring:
 
   welcome:
     message: Welcome to Spring boot based covid portal
+
+
+server:
+  error:
+    include-message: always
+    include-stacktrace: never

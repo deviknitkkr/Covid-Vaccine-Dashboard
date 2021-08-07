@@ -25,6 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/vaccination/second-dose/view/*",
             "/vaccination/view/*"
     };
+
     private final AdminService adminService;
     private final BCryptPasswordEncoder passwordEncoder;
 

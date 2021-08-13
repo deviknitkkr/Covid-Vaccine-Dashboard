@@ -18,7 +18,7 @@ public class UserService implements IUserService {
 
     @Override
     public ResponseEntity<String> save(User user) {
-
+  
         if (user.getAadharNo().toString().length() != 12)
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Enter a valid aadhar no...");
         else if (userRepository.findById(user.getAadharNo()).isPresent())
